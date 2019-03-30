@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/common/taglib.jsp" %>
+<%--sau đó nó áp giao diện này theo đường part--%>
 <html>
 <head>
     <title<dec:title default="Trang chu"></dec:title>Title</title>
@@ -20,7 +21,6 @@
         <div id="content">
             <%@include file="/common/admin/header.jsp" %>
             <dec:body></dec:body>
-
         </div>
         <%@include file="/common/admin/footer.jsp" %>
     </div>

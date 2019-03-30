@@ -3,7 +3,7 @@ package model;
 import java.sql.Timestamp;
 
 public class User {
-    public Long  Id;
+    public Long Id;
     public String userName;
     public String password;
     public String firstName;

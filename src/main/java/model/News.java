@@ -1,21 +1,20 @@
 package model;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 
 public class News {
     public Long idNews;
     public String title;
     public String shortDescription;
-    public String  content;
-    public String createdBy ;
-    public Timestamp createdDate ;
-    public String modifiedBy  ;
+    public String content;
+    public String createdBy;
+    public Timestamp createdDate;
+    public String modifiedBy;
     public Timestamp modifiedDate;
-    public String censor  ;
-    public String thumbnail  ;
-    public String  status  ;
-    public Long categoryID   ;
+    public String censor;
+    public String thumbnail;
+    public String status;
+    public Long categoryID;
 
     public Long getIdNews() {
         return idNews;
@@ -37,16 +36,16 @@ public class News {
         return content;
     }
 
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getShortDescription() {
         return shortDescription;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
     }
 
     public String getCreatedBy() {

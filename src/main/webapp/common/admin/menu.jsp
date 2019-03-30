@@ -28,7 +28,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
+           aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
             <span>Components</span>
         </a>
@@ -43,7 +44,8 @@
 
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+           aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
             <span>Utilities</span>
         </a>
@@ -68,7 +70,8 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+           aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
             <span>Pages</span>
         </a>
@@ -107,12 +110,12 @@
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-<div>
-    <script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/> "></script>
-    <script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/> "></script>
+    <div>
+        <script src="<c:url value="/template/admin/vendor/jquery/jquery.min.js"/> "></script>
+        <script src="<c:url value="/template/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"/> "></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="<c:url value="/template/admin/vendor/jquery-easing/jquery.easing.min.js"/></script>
+        <!-- Core plugin JavaScript-->
+        <script src="<c:url value="/template/admin/vendor/jquery-easing/jquery.easing.min.js"/></script>
 
     <!-- Custom scripts for all pages-->
     <<%--script  src="js/sb-admin-2.min.js">--%>

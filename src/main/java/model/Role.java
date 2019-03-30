@@ -1,22 +1,22 @@
 package model;
 
 public class Role {
-    public int roleId;
-    public String  roleName;
+    public Long roleId;
+    public String roleName;
 
-    public void setRoleId(int roleId) {
-        this.roleId = roleId;
-    }
-
-    public int getRoleId() {
+    public Long getRoleId() {
         return roleId;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
     }
 
     public String getRoleName() {
         return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 }

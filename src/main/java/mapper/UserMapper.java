@@ -10,21 +10,21 @@ public class UserMapper implements RowMapper<User> {
         User user = new User();
         try {
             user.setId(rs.getLong("userid"));
-            if (rs.getString("username")!=null){
+            if (rs.getString("username") != null) {
                 user.setUserName(rs.getString("username"));
             }
-            if (rs.getString("password")!=null){
+            if (rs.getString("password") != null) {
                 user.setPassword(rs.getString("password"));
             }
-            if (rs.getString("firstname")!=null){
+            if (rs.getString("firstname") != null) {
                 user.setFirstName(rs.getString("firstname"));
             }
-            if (rs.getString("lastname")!=null){
+            if (rs.getString("lastname") != null) {
                 user.setLastName(rs.getString("lastname"));
             }
 
             user.setCreatedDate(rs.getTimestamp("createddate"));
-            if (rs.getString("email")!=null){
+            if (rs.getString("email") != null) {
                 user.setMail(rs.getString("email"));
             }
             user.setSex(rs.getInt("sex"));
