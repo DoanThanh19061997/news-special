@@ -1,20 +1,15 @@
 package dao;
 
-import model.News;
+import model.NewsModel;
 
-import java.sql.SQLException;
 import java.util.List;
 
-public interface INewsDAO extends GenericDAO<News> {
-    void insertNews(News news);
-
-    void updateNews(Long id, News news);
-
-    News findNewsById(Long id);
-
-    /*News findNewsByString(String timKiem);*/
-    List<News> findNewsByString(String timKiem);
-
-    List<News> findAll() throws SQLException;
-
+public interface INewsDAO extends IGenericDao<NewsModel> {
+    void insertNews(NewsModel newsModel);
+    List<NewsModel> findAll();
+    NewsModel findNewsById(Long id);
+    void delete(Long id);
+    void updateNews(Long id, NewsModel newsModel);
+    NewsModel findByID(Long id);
+    List<NewsModel> findTitle(String content);
 }

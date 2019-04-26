@@ -6,13 +6,18 @@
     </excludes>
 
     <!-- apply Sitemesh default template -->
-    <!--đọc cái này tìm xem có /admin k có thỉ vào thư mục-->
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
 
+    <!--<decorator name="web" page="web.jsp">-->
+        <!--<pattern>/trang-chu*</pattern>-->
+    <!--</decorator>-->
+
+    <decorator name="web" page="web.jsp">
+        <pattern>/home</pattern>
+    </decorator>
     <decorator name="login" page="login.jsp">
         <pattern>/login*</pattern>
     </decorator>
-
 </decorators>

@@ -1,17 +1,18 @@
 package service.impl;
 
-import dao.IRoleDAO;
-import dao.impl.RoleDAOImpl;
-import model.Role;
+import dao.IRoleDao;
+import dao.impl.RoleDaoImpl;
+import model.RoleModel;
 import service.IRoleService;
 
 public class RoleService implements IRoleService {
-    IRoleDAO iRoleDAO = new RoleDAOImpl();
+    private IRoleDao roleDao;
 
-    public RoleService() {
+    public RoleService(){
+        this.roleDao = new RoleDaoImpl();
     }
 
-    public Role findRoleById(Long id) {
-        return iRoleDAO.findRoleById(id);
+    public RoleModel findRole(Long id) {
+        return roleDao.findRoleById(id);
     }
 }

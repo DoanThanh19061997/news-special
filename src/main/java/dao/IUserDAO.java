@@ -1,7 +1,13 @@
 package dao;
 
-import model.User;
+import model.UserModel;
 
-public interface IUserDAO extends GenericDAO<User> {
-    User findUserByUserNameAndPassword(String userName, String userPassword);
+import java.util.List;
+
+public interface IUserDAO {
+    void insertUser(UserModel userModel);
+    void updateUser(long id, UserModel userModel);
+//    void delete (long userId);
+    List<UserModel> findAll();
+    UserModel findOne(String userName, String password);
 }

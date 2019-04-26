@@ -4,12 +4,12 @@ public class Auth {
     private String userName;
     private String password;
 
+    public Auth() {
+    }
+
     public Auth(String userName, String password) {
         this.userName = userName;
         this.password = password;
-    }
-
-    public Auth() {
     }
 
     public String getUserName() {

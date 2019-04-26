@@ -1,7 +1,7 @@
 package service;
 
-import model.Role;
+import model.RoleModel;
 
 public interface IRoleService {
-    Role findRoleById(Long id);
+    RoleModel findRole(Long id);
 }

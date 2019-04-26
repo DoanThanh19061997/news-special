@@ -1,8 +1,10 @@
 package service;
 
-import model.User;
+import model.UserModel;
 import model.request.Auth;
 
 public interface IUserService {
-    User findUserByUserNameAndPassword(Auth auth);
+    UserModel findUserNameAndPass(Auth auth);
+    void createUser(UserModel userModel);
+    void updateUser(Long id, UserModel userModel);
 }

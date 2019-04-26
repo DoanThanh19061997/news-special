@@ -1,11 +1,5 @@
 package controller.web;
 
-import Utils.FormUtil;
-import model.User;
-import model.request.Auth;
-import service.IRoleService;
-import service.impl.RoleService;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,7 +10,6 @@ import java.io.IOException;
 
 @WebServlet("/home")
 public class HomeController extends HttpServlet {
-    IRoleService roleService = new RoleService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/web/home.jsp");

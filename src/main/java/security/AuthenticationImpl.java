@@ -1,40 +1,44 @@
 package security;
 
-import model.Role;
-import model.User;
+import model.RoleModel;
+import model.UserModel;
 import model.request.Auth;
 import service.IRoleService;
 import service.IUserService;
 import service.impl.RoleService;
 import service.impl.UserService;
+import utils.SessionUtil;
 
-public class AuthenticationImpl implements Authentication {
+import javax.servlet.http.HttpServletRequest;
+
+public class AuthenticationImpl implements Authentcation {
     private String userName;
-    private String userPassword;
-    private IUserService userService;
-    private IRoleService roleService;
+    private String password;
+    private IUserService userService = new UserService();
+    private IRoleService roleService = new RoleService();
 
-    public AuthenticationImpl(String userName, String userPassword) {
-        this.userName = userName;
-        this.userPassword = userPassword;
-        this.userService = new UserService();
-        this.roleService = new RoleService();
+    public AuthenticationImpl() {
     }
 
-    @Override
-    public String urlRedirect() {
+    public AuthenticationImpl(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
-        User user = userService.findUserByUserNameAndPassword(new Auth(userName, userPassword));
-        if (user != null) {
-            /*resp.sendRedirect("/admin");*/
-            Role role = roleService.findRoleById(user.getRoleId());
-            if (role.getRoleName().equals("ADMIN")) {
+
+    @Override
+    public String urlRedirect(HttpServletRequest request) {
+        UserModel userModel =  userService.findUserNameAndPass(new Auth(userName, password));
+        if (userModel!=null){
+            SessionUtil.getSessionUtilIntance().putValue(request,"MODEL",userModel);
+            RoleModel role= roleService.findRole(userModel.getRoleId());
+            if (role.getRoleName().equals("ADMIN")){
                 return "/admin";
-            } else if (role.getRoleName().equals("USER")) {
+            }else if(role.getRoleName().equals("USER")){
                 return "/home";
             }
-        } else {
-            return "/login?message=userNameOrPasswordInvalues";
+        }else{
+            return "/login?message=userNameOrPasswordInvalist";
         }
         return null;
     }

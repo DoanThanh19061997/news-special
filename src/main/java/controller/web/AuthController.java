@@ -1,14 +1,15 @@
 package controller.web;
 
-import Utils.FormUtil;
-import model.Role;
-import model.User;
+import model.UserModel;
 import model.request.Auth;
-import security.Authentication;
+import security.Authentcation;
+import service.ICategorySevice;
 import service.IRoleService;
 import service.IUserService;
 import service.impl.RoleService;
 import service.impl.UserService;
+import utils.FormUtil;
+import utils.SessionUtil;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,51 +19,50 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/login")
+@WebServlet(urlPatterns = {"/login","/logout"})
 public class AuthController extends HttpServlet {
-    /*IUserService iUserService = new UserService();*/
     private IUserService userService;
     private IRoleService roleService;
 
-    public AuthController(){
+
+
+    public AuthController() {
         this.userService = new UserService();
         this.roleService = new RoleService();
-    }
 
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String message = req.getParameter("message");
-        if (message != null && message.equals("userNameOrPasswordInvalues ")) {
-            req.setAttribute("message", "tên đăng nhập or mật khẩu bị sai");
+        String action = req.getParameter("action");
+        if (message != null) {
+            if (message.equals("userNameOrPasswordInvalues")) {
+                req.setAttribute("message", "Đăng nhập sai rồi kìa! Nhìn Gì >.<");
+            } else if (message.equals("notPermission")) {
+                req.setAttribute("message", "bạn k có quyền truy cập đường dẫn này");
+            } else if (message.equals("notLogin")) {
+                req.setAttribute("message", "bạn chưa đăng nhập tài khoản");
+            }
         }
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/login.jsp");
-        requestDispatcher.forward(req, resp);
+        if (action !=null && action.equals("logout")){
+            SessionUtil.xoaDL(req,"MODEL");
+            resp.sendRedirect("/home");
+        }
+        else {
+            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/login.jsp");
+            requestDispatcher.forward(req, resp);
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*String userName = req.getParameter("userName");
-        String userPassword = req.getParameter("userPassword");*/
-        /*Auth auth = FormUtil.mapToModel(Auth.class, req);
-        User user = userService.findUserByUserNameAndPassword(auth);
-        if (user != null) {
-            *//*resp.sendRedirect("/admin");*//*
-           Role role = roleService.findRoleById(user.getRoleId());
-           if (role.getRoleName().equals("ADMIN")){
-               resp.sendRedirect("/admin");
-           }else if (role.getRoleName().equals("USER")){
-               resp.sendRedirect("/home");
-           }
-        } else {
-            resp.sendRedirect("/login?message=userNameOrPasswordInvalues");
-        }*/
+//        String userName = req.getParameter("userName");
+//        String password = req.getParameter("password");
 
-        Auth auth = FormUtil.mapToModel(Auth.class,req);
-        User user = userService.findUserByUserNameAndPassword(auth);
-        String url = Authentication.newModel(auth.getUserName(),auth.getPassword()).urlRedirect();
+        Auth auth = FormUtil.mapToModel(Auth.class, req);
+        UserModel userModel = userService.findUserNameAndPass(auth);
+        String url = Authentcation.newModel(auth.getUserName(), auth.getPassword()).urlRedirect(req);
         resp.sendRedirect(url);
-
-
     }
 }
